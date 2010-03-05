@@ -1,0 +1,51 @@
+- form_for @account, :url => account_path do |f|
+	= f.error_messages
+	%fieldset
+		%legend 
+		- f.object.new_record? ? "Register" : nil
+		%ol
+			%li
+				= f.label :login
+				= f.text_field :login
+			%li
+				= f.label :password, f.object.new_record? ? nil : "Change password"
+				= f.password_field :password
+			%li
+				= f.label :password_confirmation
+				= f.password_field :password_confirmation
+	%fieldset
+		%legend Admin Contact Information
+		- f.fields_for :contacts do |child_form|
+			%ol	
+				%li
+					= child_form.label :email
+					= child_form.text_field :email
+				%li
+					= child_form.label :first_name
+					= child_form.text_field :first_name
+				%li
+					= child_form.label :last_name
+					= child_form.text_field :last_name
+				%li
+					= child_form.label :company
+					= child_form.text_field :company
+				%li
+					= child_form.label :address1
+					= child_form.text_field :address1
+				%li
+					= child_form.label :address2
+					= child_form.text_field :address2
+				%li
+					= child_form.label :city
+					= child_form.text_field :city
+				%li
+					= child_form.label :state
+					= child_form.text_field :state
+				%li
+					= child_form.label :zip
+					= child_form.text_field :zip
+				%li
+					= child_form.label :phone
+					= child_form.text_field :phone
+	%fieldset.submit
+		= f.submit "Register"

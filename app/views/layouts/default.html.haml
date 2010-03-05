@@ -1,0 +1,16 @@
+!!! Strict
+%html
+	%head
+		%title NONE
+		= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+	%body.three-col
+		#container
+			#header 
+				= render :partial => "shared/menu"
+			#content
+				= yield
+				
+			#sidebar
+				
+			#footer
+				%p Copyright 2010 EnergyCAP Inc.

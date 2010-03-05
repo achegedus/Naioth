@@ -1,0 +1,21 @@
+%h2 Naioth Saas
+#links
+	%ul
+		%li
+			= link_to 'home', :controller => :main
+		%li 
+			= link_to 'feature tour', :controller => :tour, :action => "index"
+			
+		- if !current_account
+			%li
+				= link_to "register", new_account_path
+			%li
+				= link_to "login", new_account_session_path
+		- else
+			%li
+				= link_to "my account", account_path
+			%li
+				= link_to "logout", account_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
+		- if flash[:notice]
+			%li.flash
+				= flash[:notice]
